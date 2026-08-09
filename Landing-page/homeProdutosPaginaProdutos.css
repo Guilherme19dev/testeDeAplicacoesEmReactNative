@@ -54,7 +54,7 @@ input{
     z-index:9;
     height:100vh;
     width:6vw;
-    min-width:55px;
+    min-width:47px;
     padding-top: 13vh;
     transition: .7s;
     color:transparent;
@@ -78,8 +78,7 @@ input{
 }
 #pagina-inicial{
     width:100vw;
-    padding-top:20vh;
-    padding-bottom: 5vh;
+    padding:20vh 0 5vh 10px;
     overflow-x: hidden;
 }
  #carrossel{
@@ -104,12 +103,11 @@ input{
  .caixa{
     position: absolute;
     display: flex;
-    justify-content: space-between;
     margin-left: 200vw;
     transition:2s;
     height:80%;
     width:50%;
-    min-width: 400px;
+    min-width: 100px;
     border-radius: 10px;
      border:solid .5px rgba(16, 94, 87, 0.671) ;
     
@@ -122,13 +120,16 @@ input{
  #caixa3{
    background-color: rgb(121, 143, 108);
  }.display{
-   margin-left: 4vh;
+   margin-left: 3.5vh;
   transition:2s;
  }
- #bottoes{
+ #bottoes {
+    display: flex;
     width:100vw;
     height:25px;
     margin-bottom:7%;
+    padding:0 9vw 0 10vw;
+    justify-content:space-between;
    
 
  }#bottoes i{
@@ -137,34 +138,34 @@ input{
    opacity: .9;
  }
  #left{
-    position: absolute;
     border-radius: 5px;
     background-color: rgba(55, 187, 15, 0.836);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.466);
     border:none;
     width:10vw;
     height:8vh;
-    margin-left:10%;
-    z-index: 5;
+    z-index: 8;
     
  }
  #right{
-    position: absolute;
     border-radius: 5px;
     background-color: rgba(55, 187, 15, 0.836);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.466);
     border:none;
     width:10vw;
     height:8vh;
-    margin-left:85%;
+    margin-left:8%;
+    z-index: 8;
  }#ofertas{
    display:flex;
+   justify-content: center;
     margin-top: 15vh;
     margin-bottom:10vh;
     min-height:40vh;
     width:100%;
-    margin-left: 20px;
-    padding-left:6vw;
+    margin-left:1vw;
+    padding-right:1vw;
+    padding-left:2vw;
     background-color: rgb(104, 8, 177);
     border-bottom: solid 2px rgb(255, 254, 254);
     border-top: solid 2px rgba(255, 254, 254, 0.993);
@@ -212,7 +213,7 @@ input{
     height:10vh;
     width: 100vw;
     font-size:1.3rem;
-    padding-left: 30px;
+    padding-left: 10vw;
     align-items: baseline;
     font-family: "Archivo Black", sans-serif;
 }#produtos{
@@ -298,16 +299,17 @@ transition:.3s;
     margin-top: 5vh;
     gap:5%;
     max-height: 500px;
-    padding:5px 2vw 5px 10vw;
+    padding-left:8vw;
+    padding:5px 2vw 5px 15vw;
     background-color:rgb(235, 229, 235);
     align-items:center;
     justify-content: center;
 }#imagens{
     display:flex;
     height:70vh;
-    gap:10px;
     flex: 1;
     max-width: 500px;
+    min-width:250px;
     align-items:center;
     justify-content: center;
     flex-direction: column;
@@ -319,17 +321,16 @@ width:100%;
 border:solid 1px rgb(202, 187, 187);
 border-radius:10px;
 }
-#imagens #outrasImagens{
-    width:100%;
+ #imagens #outrasImagens{
     display: flex;
     align-items: center;
+     padding:0 2vw 0 2vw ;
     justify-content: center;
-    gap:10px;
-    height:20%;
-}
-#individual #outrasImagens img{
+    gap:.5vw;
+    height:27%;
+    width:100%;
+} #outrasImagens img{
 display: flex;
-flex:1;
 height:100%;
 align-items: center;
 }#texto{
@@ -351,12 +352,12 @@ text-wrap:wrap;
 
 }#texto button{
     margin-top: .5vh;
-    height:5vh;
+    height:8vh;
     width:15vw;
     min-width: 110px;
     border-radius:20px;
     background-color:rgb(148, 128, 128);
-    font-size:1.4rem;
+    font-size:2.7vw;
 }#texto h1{
     margin-top: .7vh;
     margin-left:.5vw;
@@ -375,8 +376,7 @@ text-wrap:wrap;
     justify-content:center;
     width:100%;
     height: auto;
-    padding-left:2%;
-    padding-right:.5%;
+    padding:3vh 10% 4vh 15%;
     background-color:rgb(148, 128, 128);
     margin-top:10vh;
     font-size:1.3rem;
@@ -390,36 +390,46 @@ text-wrap:wrap;
     height:80vh;
     gap:5%;
     margin-top:10vh;
-    padding-left: 8%;
-    padding-right: 2%;
+    padding-left: 12vw;
+    padding-right: 4vw;
     padding-top:1%;
     padding-bottom: 1%;
 }
 .itemSecundario{
    display:flex;
+   gap:5px;
    flex-direction: column;
     height:90%;
     flex: 1;
     max-height: 700px;
-    max-width: 450px;
+    max-width: 400px;
+    padding-bottom: 6px;
+    background-color: rgb(98, 184, 105);
     border:solid 3px white;
     border-radius:5px;
 }.imagemSec{
+    position:relative;
     height:70%;
     max-height: 370px;
+     max-width: 400px;
+     border-bottom: solid 3px rgb(16, 95, 22);
 }
 .imagemSec img{
+    position:absolute;
     height:100%;
     width:100%;
 }
 .conteudo{
     display: flex;
     flex-direction: column;
+    gap:10px;
     align-items: center;
-    justify-content: center;
-}.conteudo h2,.conteudo h1{
-font-size: 1rem;
+}.conteudo h2{
+font-size: 1.8vw;
 text-align: center;
+}.conteudo h1{
+    font-size: 1.4vw;
+   text-align: center; 
 }
 .confira{
     height:50%;

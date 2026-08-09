@@ -65,6 +65,16 @@ function criarImagemSecundaria(imagem,indObject){
         cont2ImagemSec.appendChild(cont2ImagemSecCont)
                 imagem.appendChild(cont2ImagemSec)
 }
+function criarDescricaoAprofundada(indObject,texto){
+   let descricao = document.createElement("div") 
+         descricao.classList.add("descricao")
+         descricao.classList.add("hide")
+          let descricaoTexto = document.createElement("p")
+          descricaoTexto.innerHTML=indObject.descricaoaprofundada
+            descricao.appendChild(descricaoTexto)
+             texto.appendChild(descricao)
+
+}
 
 function criarTexto(divPai,indObject){
     let texto = document.createElement("div")
@@ -81,6 +91,7 @@ function criarTexto(divPai,indObject){
                             buttComprar.classList.add("comprar")
                             buttComprar.innerText="Comprar"
         texto.appendChild(buttComprar)
+    criarDescricaoAprofundada(indObject,texto)
                      divPai.appendChild(texto)
 }
 
@@ -191,6 +202,11 @@ function setarTextoDaPaginaProduto(elementPai){
             tituloDaPaginaP.innerHTML = conteudoDoTitulo.innerHTML
                 conteudoDaPaginaP.innerHTML = conteudoDaPagina.innerHTML
 }
+function setarDescricaoProduto(elementPai){
+        let conteudoDaDescricao = elementPai.querySelector(".descricao p")
+                let descricaoDaPagina = document.querySelector("#descricaoProfunda p")
+                descricaoDaPagina.innerHTML=conteudoDaDescricao.innerHTML
+}
 
 function setarImagensDaPaginaProduto(elementPai){
     console.log(elementPai)
@@ -220,11 +236,12 @@ function setarImagemSecundariaDaPaginaProdutos(elementPai){
             setarImagensDaPaginaProduto(elementPai)     
                 setarImagemSecundariaDaPaginaProdutos(elementPai)
                     setarTextoDaPaginaProduto(elementPai)
-                        let outrasImagens=setarImagemSecundariaDaPaginaProdutos(elementPai)
-                            let imagemDoProdutop=setarImagensDaPaginaProduto(elementPai)
-                                console.log(outrasImagens)  
-                             trocarImagem(outrasImagens,imagemDoProdutop)
-                             mostrasOutrosProdutos(elementPai,objeto)
+                        setarDescricaoProduto(elementPai)
+                            let outrasImagens=setarImagemSecundariaDaPaginaProdutos(elementPai)
+                                let imagemDoProdutop=setarImagensDaPaginaProduto(elementPai)
+                                    console.log(outrasImagens)  
+                                trocarImagem(outrasImagens,imagemDoProdutop)
+                                mostrasOutrosProdutos(elementPai,objeto)
 }
 function redirecionarDentroDaPaginaProdutos(objeto){
   let DivMae = document.querySelector("#outrosProdutos")
