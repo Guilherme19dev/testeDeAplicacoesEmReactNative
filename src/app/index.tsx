@@ -1,98 +1,97 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+export default function PaginaInicio() {
+  const [titleValue, setTitle] = useState(
+    "Digite algo para substituir o nosso titulo",
+  );
+  const [textoEscrito, setTexto] = useState("Aqui ficarão suas histórias");
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
+  const [valor, setvalor] = useState("Digite algo");
+
+  function mudarTexto() {
+    setTitle(textoEscrito);
   }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <View style={estiloBásico.paginaDesign}>
+      <View style={estiloBásico.inputArea}>
+        <Text>{titleValue}</Text>
+        {/*<TextInput
+          style={estiloBásico.input}
+          placeholder="Digite o novo valor"
+          onChangeText={setTitle}
+        ></TextInput>*/}
+        <TextInput
+          style={estiloBásico.input}
+          placeholder="Digite o novo valor"
+          onChangeText={setTexto}
+        ></TextInput>
+        <Pressable style={estiloBásico.buttonArea} onPress={mudarTexto}>
+          <Text style={estiloBásico.textButton}>Confirmar</Text>
+        </Pressable>
+      </View>
+
+      <View style={estiloBásico.inputArea}>
+        <Text>{valor}</Text>
+        <TextInput
+          style={estiloBásico.input}
+          placeholder="Digite o novo valor"
+          onChangeText={setvalor}
+        ></TextInput>
+      </View>
+    </View>
   );
 }
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+const estiloBásico = StyleSheet.create({
+  paginaDesign: {
+    height: "100%",
+    width: "100%",
+    paddingTop: 50,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#9ccde1",
+    gap: 10,
+    padding: 20,
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+  inputArea: {
+    height: "50%",
+    width: "70%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: 40,
+    padding: 20,
+    gap: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    backgroundColor: "#fff",
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  input: {
+    width: "100%",
+    height: 30,
+    borderWidth: 2,
+    borderColor: "#000",
+    borderRadius: 10,
+    textAlign: "center",
+    padding: "1%",
+    backgroundColor: "#76787958",
   },
-  title: {
-    textAlign: 'center',
+  buttonArea: {
+    height: 30,
+    width: "70%",
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "#4730bb",
+    borderRadius: 5,
   },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  textButton: {
+    height: "100%",
+    width: "100%",
+    fontSize: 20,
+    color: "#fff",
+    textAlign: "center",
   },
 });
