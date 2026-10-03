@@ -43,7 +43,7 @@ export default function paginaCartao() {
     <ScrollView style={{ height: "100%", width: "100%" }}>
       <View style={Itens.geral}>
         <View style={Itens.formulario}>
-          <Text>Crie seu cartão</Text>
+          <Text>Crie seu cartão Personalizado</Text>
           <TextInput
             placeholder="Digite o título"
             onChangeText={setValorTitle}
